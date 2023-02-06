@@ -24,21 +24,30 @@ class Cursor {
 
   up() {
     // Move cursor up
+    this.row !== 0 ? this.row-- : ""
   }
 
-  down() {
-    // Move cursor down
+  down(){
+
+    this.row !== 2 ? this.row++ : ""
+
   }
 
   left() {
     // Move cursor left
+    this.col !== 0 ? this.col-- : ""
   }
 
   right() {
     // Move cursor right
+    this.col !== 2 ? this.col++ : ""
   }
 
 }
 
+// [0: [0, 1, 2]
+//  1: [0, 1, 2]
+//  2: [0, 1, 2]
+// ]
 
 module.exports = Cursor;

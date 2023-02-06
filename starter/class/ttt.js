@@ -28,12 +28,54 @@ class TTT {
     console.log("TEST COMMAND");
   }
 
+  static checkHorizontal(grid){
+    let winner
+    grid.forEach( i => i.every( i2 => i2 === 'X') ? winner = 'X' : '' )
+    grid.forEach (i => i.every( i2 => i2 === 'O') ? winner = 'O' : '')
+
+
+ return winner == 'X'? 'X'
+   : winner == 'O'? 'O'
+   : false
+
+  }
+
+
+  static checkVertical = (grid) =>{
+    let winner
+    let col = []
+      grid.forEach((row, i) => {
+        row.forEach((val, j) => {
+
+              col.length !== 3 ? col.push(grid[j][i]) : ""
+
+        })
+        col.every(i => i === col[0]) && col[0] === "X" || col[0] === "O" ? winner = col[0] : ""
+
+        col = []
+      })
+
+
+
+   return winner === 'X' ? 'X'
+    : winner === 'O' ? 'O'
+    : false
+   }
+
   static checkWin(grid) {
 
     // Return 'X' if player X wins
     // Return 'O' if player O wins
     // Return 'T' if the game is a tie
     // Return false if the game has not ended
+    let horizontalWinner = this.checkHorizontal(grid)
+    let verticalWinner = this.checkVertical(grid)
+
+    return horizontalWinner !== false ? horizontalWinner
+    : verticalWinner !== false ? verticalWinner
+    : false
+
+
 
   }
 
